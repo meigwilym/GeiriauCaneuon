@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
+            <div class="panel panel-primary">
                 <div class="panel-heading">Golygu Lyric</div>
                 
                 <div class="panel-body">
@@ -15,9 +15,16 @@
                 
                 {!! Form::hidden('artist_id', $lyric->artist->id) !!}
                 
-                {!! Form::textarea('lyric', null, ['class' => 'form-control']) !!}
+                <div class="form-group">
+                    <label for="lyric">Lyric</label>
+                    {!! Form::textarea('lyric', null, ['class' => 'form-control']) !!}
+                </div>
                 
-                {!! Form::text('suggested_by', null, ['class' => 'form-control']) !!}
+                <div class="form-group">
+                    <label for="suggested_by">Awgrymwyd gan</label>
+                    {!! Form::text('suggested_by', null, ['class' => 'form-control']) !!}
+                    <p class="help-block">Enw trydar y person wnaeth awgrymu'r lyric</p>
+                </div>
                 
                 {!! Form::submit('Cadw', ['class' => 'btn']) !!} neu <a href="{{ route('artists.show', $lyric->artist) }}">Canslo</a>
                 {!! Form::close() !!}

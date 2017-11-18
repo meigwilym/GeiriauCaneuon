@@ -8,10 +8,6 @@
                 <div class="panel-heading">{{ $artist->name }}</div>
                 
                 <div class="panel-body">
-                    
-                    <div class="pull-right">
-                        <a href="{{route('submit.lyric', $artist)}}" class="btn btn-success" title="Ychwanegu Lyric newydd i {{ $artist->name }}">+ Lyric</a>
-                    </div>
                 
                 @if($artist->twitter)
                 <p><a href="{{ $artist->twitter_url }}">{{ $artist->twitter_handle }}</a></p>
@@ -27,6 +23,11 @@
                 <p><br /><a href="{{route('submit.image', $artist)}}" class="btn btn-success" title="Ychwanegu Llun newydd i {{ $artist->name }}">+ Llun</a></p>
                 
 
+                
+                <div class="pull-right">
+                    <a href="{{route('submit.lyric', $artist)}}" class="btn btn-success" title="Ychwanegu Lyric newydd i {{ $artist->name }}">+ Lyric</a>
+                </div>
+                
                 <h3>Lyrics</h3>
                 
                 @if($artist->lyrics->count() == 0)
