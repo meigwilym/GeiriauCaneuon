@@ -31,20 +31,20 @@ class SubmitLyricController extends Controller
     public function storeArtistImage(Artist $artist, ArtistImageCreateRequest $request)
     {
         $count = $artist->images->count() + 1;
-        $filename = str_slug($artist->name.$count.'.'.$request->image->getClientOriginalExtension());
+        $filename = str_slug($artist->name.$count).'.'.$request->image->getClientOriginalExtension();
         
         $image = ArtistImage::make(['filename' => $filename]);
-        $request->image->move(public_path('imgz'), $filename);
+        $request->image->move(storage_path($image->storagePath), $image->filename);
         
         $artist->images()->save($image); 
         
         if($request->input('redirect') == 1)
         {
-            return redirect()->route('submit.image', $artist);
+            return redirect()->route('submit.image', $artist)->withSuccess('Diolch am y llun!');
         }
         elseif($request->input('redirect') == 2)
         {
-            return redirect()->route('submit.lyric', $artist);
+            return redirect()->route('submit.lyric', $artist)->withSuccess('Diolch am y llun!');
         }
     }
     

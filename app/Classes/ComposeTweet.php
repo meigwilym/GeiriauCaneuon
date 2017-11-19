@@ -10,12 +10,11 @@ class ComposeTweet {
 
     public static function compose(Lyric $lyric)
     {
-        $update = $lyric->getLyric();
+        $update = $lyric->lyric;
 
-        $twitter = $lyric->getArtist()->getTwitter();
-	if($twitter != null)
+	if(strlen($lyric->artist->twitter) > 0)
 	{
-	    $update .= "\n@".$twitter;
+	    $update .= "\n".$lyric->artist->twitter_handle;
         }
         return $update;
     }

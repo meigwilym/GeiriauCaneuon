@@ -2,8 +2,6 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
-
 class Lyric extends BaseModel
 {
     public function artist()
@@ -14,5 +12,20 @@ class Lyric extends BaseModel
     public function logs()
     {
         return $this->hasMany(Log::class);
+    }
+    
+    public function setSuggestedByAttribute($suggestedBy)
+    {
+        return ltrim($suggestedBy, '@');
+    }
+    
+    public function getSuggestedByAttribute()
+    {
+        if(strlen($this->attributes['suggested_by']) > 0)
+        {
+            return '@'.$this->attributes['suggested_by'];
+        }
+        
+        return null;
     }
 }

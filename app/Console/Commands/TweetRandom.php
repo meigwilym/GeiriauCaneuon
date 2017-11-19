@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Log;
 use Illuminate\Console\Command;
 
 class TweetRandom extends Command
@@ -37,10 +38,19 @@ class TweetRandom extends Command
      */
     public function handle()
     {
+        $latest = Log::orderBy('created_at', 'DESC')->get();
+        
+        // wait at least two hours before tweeting again 
+        if($latest->created_at->addHours(2) > date_create())
+        {
+            return;
+        }
+        
+        // throw a 180 sided dice 
         $rand = mt_rand(0, 180);
         if($rand == 40)
         {
-            $this->call('tweet:post');
+            $this->call('tweet:post '.$latest->artist_id);
         }
     }
 }

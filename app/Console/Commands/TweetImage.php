@@ -45,13 +45,11 @@ class TweetImage extends Command
         if(\App::environment('production'))
         {
             $response = \Twitter::uploadMedia(['media' => $contents]);
-
             \Log::info('posted image', [$response->media_id]);
             
             return $response->media_id_string;
         }
         
-        return;
-        
+        return;        
     }
 }
