@@ -11,15 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', ['as' => 'suggest', 'uses' => 'SuggestionController@create']); 
+Route::post('/', ['as' => 'suggest.store', 'uses' => 'SuggestionController@store']); 
 
 Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('/login', 'Auth\LoginController@login');
-
-Route::get('/', ['as' => 'suggest', 'uses' => 'SuggestionController@create']); 
-Route::post('/', ['as' => 'suggest.store', 'uses' => 'SuggestionController@store']); 
 
 Route::middleware(['auth'])->group(function(){
     Route::post('/logout', 'Auth\LoginController@logout')->name('logout');

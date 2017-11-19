@@ -16,8 +16,8 @@ class Notification
         if(\App::environment('production'))
         {
             // send a dm to Yws
-            $dm = ['screen_name' => 'ywsgwynedd', 'text' => 'Awgrym newydd ar gyfer @geiriauCaneuon, lyrics gan '.$suggestion->artist.' a awgrymwyd gan '.$suggestion->twitter];
-            // \Twitter::postDm($dm);
+            $dm = ['screen_name' => 'ywsgwynedd', 'text' => 'Awgrym newydd ar gyfer @geiriauCaneuon. Lyrics gan '.$suggestion->artist.', awgrymwyd gan '.$suggestion->twitter];
+            \Twitter::postDm($dm);
             \Log::info('Sent a DM for new suggestion');
         }
     }
