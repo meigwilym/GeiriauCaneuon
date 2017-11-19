@@ -12,6 +12,19 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style type="text/css">
+        body{
+            background: url('/bg.png') center center;
+            background-size: auto;
+        }
+        .navbar-default{
+            background-color:rgba(255, 255, 255, 0.5);
+            border-color:#8f9396;
+        }
+        .panel{
+            background-color:rgba(255, 255, 255, 0.65);
+        }
+    </style>
 </head>
 <body>
     <div id="app">
