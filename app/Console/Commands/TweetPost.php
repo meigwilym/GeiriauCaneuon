@@ -44,7 +44,7 @@ class TweetPost extends Command
     public function handle()
     {
         $artist_id = $this->argument('artist');
-        $lyric = Lyric::where('artist_id', '<>', $artist_id)->random();
+        $lyric = Lyric::where('artist_id', '<>', $artist_id)->get()->random();
         $lyric->load(['artist.images']);
         
         // send to twitter 
@@ -59,7 +59,7 @@ class TweetPost extends Command
             }
             
             $response = \Twitter::postTweet($tweet);
-            Log::create(['artist_id' => $lyric->artist->id, 'image_id' => $image->id,'tweet' => $response->id_str]);
+            Log::create(['artist_id' => $lyric->artist->id, 'artist_image_id' => $image->id, 'tweet' => $response->id_str]);
             
             // reply to the tweet mentioning the person who suggested
             if($lyric->suggested_by != null)

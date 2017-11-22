@@ -14,7 +14,7 @@ class LyricController extends Controller
     
     public function update(Lyric $lyric, LyricSaveRequest $request)
     {
-        $lyric->update($request->only('lyric'));
+        $lyric->update($request->only(['lyric', 'suggested_by']));
         
         return redirect()->route('artists.show', $lyric->artist);
     }

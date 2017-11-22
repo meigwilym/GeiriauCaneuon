@@ -16,7 +16,7 @@ class Lyric extends BaseModel
     
     public function setSuggestedByAttribute($suggestedBy)
     {
-        return ltrim($suggestedBy, '@');
+        $this->attributes['suggested_by'] = ltrim($suggestedBy, '@');
     }
     
     public function getSuggestedByAttribute()

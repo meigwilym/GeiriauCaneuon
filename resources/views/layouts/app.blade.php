@@ -16,6 +16,7 @@
         body{
             background: url('/bg.png') center center;
             background-size: auto;
+            background-attachment:fixed;
         }
         .navbar-default{
             background-color:rgba(255, 255, 255, 0.5);
@@ -42,7 +43,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        @geiriauCaneuon
                     </a>
                 </div>
 
@@ -95,5 +96,6 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    @yield('scripts')
 </body>
 </html>

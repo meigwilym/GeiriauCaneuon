@@ -18,6 +18,7 @@
                 <div class="form-group">
                     <label for="lyric">Lyric</label>
                     {!! Form::textarea('lyric', null, ['class' => 'form-control']) !!}
+                    <div id="count" class="pull-right"></div>
                 </div>
                 
                 <div class="form-group">
@@ -26,7 +27,7 @@
                     <p class="help-block">Enw trydar y person wnaeth awgrymu'r lyric</p>
                 </div>
                 
-                {!! Form::submit('Cadw', ['class' => 'btn']) !!} neu <a href="{{ route('artists.show', $lyric->artist) }}">Canslo</a>
+                {!! Form::submit('Cadw', ['class' => 'btn btn-primary']) !!} neu <a href="{{ route('artists.show', $lyric->artist) }}">Canslo</a>
                 {!! Form::close() !!}
                 
                 </div>
@@ -34,4 +35,20 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+<script>
+(function($){    
+    chCount();
+    $("textarea").keyup(function(){
+        chCount();
+    });
+    
+    function chCount(){
+        var twitter = '{{$lyric->artist->twitter}}';
+        $("#count").text(($("textarea").val().length - twitter.length)+'/280');
+    }
+})($)
+</script>
 @endsection

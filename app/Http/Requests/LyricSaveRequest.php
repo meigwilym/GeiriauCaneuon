@@ -26,6 +26,7 @@ class LyricSaveRequest extends FormRequest
         return [
             'artist_id' => ['required', 'exists:artists,id'],
             'lyric' => ['required'],
+            'suggested_by' => [],
         ];
     }
 }
