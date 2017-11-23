@@ -32,4 +32,13 @@ class Artist extends BaseModel
         if($this->attributes['twitter'])
             return '@'.$this->attributes['twitter'];
     }
+
+    public function getRandomImage()
+    {
+	    if($this->images->count() > 0)
+	    {
+		    return $this->images->random();
+	    }
+	    return 'default.png';
+    }
 }

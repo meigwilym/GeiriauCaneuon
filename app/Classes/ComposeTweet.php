@@ -14,7 +14,7 @@ class ComposeTweet {
 
 	if(strlen($lyric->artist->twitter) > 0)
 	{
-	    $update .= "\n".$lyric->artist->twitter_handle;
+	    $update .= " \n".$lyric->artist->twitter_handle;
         }
         return $update;
     }
